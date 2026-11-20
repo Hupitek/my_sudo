@@ -8,6 +8,8 @@ on:
 
 jobs:
     build:
+        if: ${{ !(github.repository == VARS.MY_SUDO_EPITECH_REPO)}}
+
         runs-on: ubuntu-latest
 
         container:
