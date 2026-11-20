@@ -1,0 +1,5 @@
+*.o
+*.a
+my_sudo
+obj
+bootstrap
