@@ -8,7 +8,7 @@ on:
 
 jobs:
     build:
-        if: ${{ !(github.repository == VARS.MY_SUDO_EPITECH_REPO)}}
+        if: ${{ github.repository != VARS.MY_SUDO_EPITECH_REPO }}
 
         runs-on: ubuntu-latest
 
@@ -23,6 +23,10 @@ jobs:
 
             - name: make codingstyle
               run: make codingstyle
+
+            - name: banned functions
+              run: ./banned_function.sh
+
     mirror:
         needs: [build]
 
