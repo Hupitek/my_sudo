@@ -26,7 +26,6 @@ SRC	=	my_compute_power_rec.c		\
 		my_str_isnum.c			\
 		my_str_isprintable.c		\
 		my_str_isupper.c		\
-		my_str_to_word_array.c		\
 		my_strcapitalize.c		\
 		my_strcat.c			\
 		my_strcmp.c			\
