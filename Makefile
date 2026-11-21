@@ -13,7 +13,8 @@ LDFLAGS  = 	-Llib/my
 
 LDLIBS   = 	-lmy
 
-SRC 	=	src/my_sudo.c
+SRC 	=	src/my_sudo.c	\
+			src/data/get_shadow_data.c	\
 
 OBJ_DIR	=	obj
 
