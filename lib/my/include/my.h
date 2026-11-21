@@ -60,5 +60,6 @@ int my_put_sunsignednbr(short unsigned int nb);
 int my_putsnbr_base(short int nbr, char const *base);
 int mini_printf(const char *format, ...);
 int my_putstr_error(char const *str);
+int my_strcharlen(char *str, char end);
 
 #endif // MY_H

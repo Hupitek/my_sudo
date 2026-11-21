@@ -59,6 +59,7 @@ SRC	=	my_compute_power_rec.c		\
 		my_countsnbr_base.c		\
 		mini_printf.c		\
 		my_putstr_error.c	\
+		my_strcharlen.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
