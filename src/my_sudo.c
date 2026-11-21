@@ -16,10 +16,7 @@
 #include "../lib/my/include/my.h"
 #include "func_my_sudo.h"
 
-int main(int ac, char **av, char **env)
+int main(void)
 {
-    my_sudo_t my_sudo = {0};
-
-    get_user(env, &my_sudo);
     return 0;
 }
