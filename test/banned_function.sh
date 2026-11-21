@@ -11,16 +11,16 @@
 
 # Fonction My_Sudo:
 
-grep -R 'system' . --include="*.c" --exclude-dir="bootstrap" > res
-grep -R 'getpw' . --include="*.c" --exclude-dir="bootstrap" >> res
-grep -R 'getsp' . --include="*.c" --exclude-dir="bootstrap" >> res
-grep -R 'getgr' . --include="*.c" --exclude-dir="bootstrap" >> res
-grep -R 'fork' . --include="*.c" --exclude-dir="bootstrap" >> res
-grep -R 'clone' . --include="*.c" --exclude-dir="bootstrap" >> res
-grep -R 'openat' . --include="*.c" --exclude-dir="bootstrap" >> res
-grep -R 'getpass' . --include="*.c" --exclude-dir="bootstrap" >> res
-grep -R 'getlogin' . --include="*.c" --exclude-dir="bootstrap" >> res
-grep -R 'cuserid' . --include="*.c" --exclude-dir="bootstrap" >> res
+grep -R 'system' . --include="*.c" --exclude-dir="bootstrap" --exclude-dir="test_perso"> res
+grep -R 'getpw' . --include="*.c" --exclude-dir="bootstrap" --exclude-dir="test_perso">> res
+grep -R 'getsp' . --include="*.c" --exclude-dir="bootstrap" --exclude-dir="test_perso">> res
+grep -R 'getgr' . --include="*.c" --exclude-dir="bootstrap" --exclude-dir="test_perso">> res
+grep -R 'fork' . --include="*.c" --exclude-dir="bootstrap" --exclude-dir="test_perso">> res
+grep -R 'clone' . --include="*.c" --exclude-dir="bootstrap" --exclude-dir="test_perso">> res
+grep -R 'openat' . --include="*.c" --exclude-dir="bootstrap" --exclude-dir="test_perso">> res
+grep -R 'getpass' . --include="*.c" --exclude-dir="bootstrap" --exclude-dir="test_perso">> res
+grep -R 'getlogin' . --include="*.c" --exclude-dir="bootstrap" --exclude-dir="test_perso">> res
+grep -R 'cuserid' . --include="*.c" --exclude-dir="bootstrap" --exclude-dir="test_perso">> res
 
 remove_file() {
     rm -f res
