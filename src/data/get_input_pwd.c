@@ -22,5 +22,6 @@ int get_pwd_input(my_sudo_t *my_sudo)
     if (!my_sudo->pwd_input)
         return ERROR_EXIT;
     my_strcpy(my_sudo->pwd_input, buff);
+    my_sudo->pwd_input[size - 1] = '\0';
     return SUCCESS_EXIT;
 }
