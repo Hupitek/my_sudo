@@ -11,11 +11,15 @@ CFLAGS 	=	-Iinclude/
 
 LDFLAGS  = 	-Llib/my
 
-LDLIBS   = 	-lmy
+LDLIBS   = 	-lmy -lcrypt
 
 SRC 	=	src/my_sudo.c	\
 			src/data/get_shadow_data.c	\
 			src/data/get_user.c	\
+			src/data/get_input_pwd.c	\
+			src/free/free_my_sudo.c	\
+			src/action/compare_pwd.c	\
+			src/action/hash_pwd.c	\
 
 OBJ_DIR	=	obj
 
