@@ -83,23 +83,30 @@ int get_user_info(my_sudo_t *my_sudo, char *buff)
     return SUCCESS_EXIT;
 }
 
+int fill_buff(char *buff, struct stat *sarg)
+{
+    int fd = 0;
+
+    fd = open(ETC_SHADOW_PATH, O_RDONLY);
+    if (fd == -1)
+        return ERROR_EXIT;
+    read(fd, buff, sarg->st_size);
+    buff[sarg->st_size] = '\0';
+    close(fd);
+    return SUCCESS_EXIT;
+}
+
 int get_shadow_data(my_sudo_t *my_sudo)
 {
     char *buff;
     struct stat sarg;
-    int fd = 0;
 
     if (stat(ETC_SHADOW_PATH, &sarg) == -1)
-        return ERROR_EXIT;
-    fd = open(ETC_SHADOW_PATH, O_RDONLY);
-    if (fd == -1)
         return ERROR_EXIT;
     buff = malloc(sizeof(char) * (sarg.st_size + 1));
     if (!buff)
         return ERROR_EXIT;
-    read(fd, buff, sarg.st_size);
-    buff[sarg.st_size] = '\0';
-    close(fd);
+    fill_buff(buff, &sarg);
     if (get_user_info(my_sudo, buff) == ERROR_EXIT) {
         free(buff);
         return ERROR_EXIT;
