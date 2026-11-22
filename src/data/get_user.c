@@ -15,14 +15,19 @@
 int get_user(char **env, my_sudo_t *my_sudo)
 {
     int line = 0;
+    int indice = 0;
 
     for (; env[line] != NULL; line++) {
-        if (my_strstr(env[line], "USER=") != NULL)
+        if (my_strstr(env[line], "SUDO_USER=") != NULL)
             break;
     }
-    env[line] += 5;
     my_sudo->user = malloc(sizeof(char) * (my_strlen(env[line]) + 1));
-    for (int i = 0; i < my_strlen(env[line]); i++)
-        my_sudo->user[i] = env[line][i];
+    if (!my_sudo->user)
+        return ERROR_EXIT;
+    for (int i = 10; i < my_strlen(env[line]); i++) {
+        my_sudo->user[indice] = env[line][i];
+        indice++;
+    }
+    my_sudo->user[indice] = '\0';
     return SUCCESS_EXIT;
 }
