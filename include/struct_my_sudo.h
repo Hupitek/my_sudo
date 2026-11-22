@@ -11,7 +11,10 @@
 typedef struct my_sudo_s {
     char *user;
     char *pwd_user;
+    char *salt;
+    char *hash_algo;
     char *pwd_input;
+    char *pwd_input_hash;
 } my_sudo_t;
 
 
