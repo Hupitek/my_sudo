@@ -7,33 +7,12 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-#include <fcntl.h>
-#include <sys/stat.h>
 #include <stdio.h>
-#include "macro.h"
 #include "return_macro.h"
 #include "struct_my_sudo.h"
-#include "../lib/my/include/my.h"
 #include "func_my_sudo.h"
 
-int check_arg(int ac, char **av)
-{
-    char **arg;
-
-    if (ac <= 2)
-        return ERROR_EXIT;
-    arg = malloc(sizeof(char*) * (ac - 1));
-    if (!arg)
-        return ERROR_EXIT;
-    for (int i = 1; av[i] != NULL; i++)
-        arg[i - 1] = av[i];
-    arg[ac - 1] = NULL;
-    if (arg[0][0] != '-')
-        execvp(arg[0], arg);
-    free(arg);
-    return SUCCESS_EXIT;
-}
-
+static
 int my_sudo_func(my_sudo_t *my_sudo, int ac, char **av, char **env)
 {
     if (get_user(env, my_sudo) == ERROR_EXIT)
@@ -43,9 +22,9 @@ int my_sudo_func(my_sudo_t *my_sudo, int ac, char **av, char **env)
     if (get_pwd_input(my_sudo))
         return ERROR_EXIT;
     hash_pwd(my_sudo);
-    if (compare_pwd(my_sudo) == ERROR_EXIT)
+    if (compare_pwd(my_sudo->pwd_user, my_sudo->pwd_input_hash) == ERROR_EXIT)
         return ERROR_EXIT;
-    if (check_arg(ac, av) == ERROR_EXIT)
+    if (exec_command(ac, av) == ERROR_EXIT)
         return ERROR_EXIT;
     return SUCCESS_EXIT;
 }
