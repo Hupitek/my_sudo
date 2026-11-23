@@ -9,9 +9,9 @@
 #include "struct_my_sudo.h"
 #include "../../lib/my/include/my.h"
 
-int compare_pwd(my_sudo_t *my_sudo)
+int compare_pwd(char *mdp, char *mdp_compare)
 {
-    if (my_strcmp(my_sudo->pwd_user, my_sudo->pwd_input_hash) != 0)
+    if (my_strcmp(mdp, mdp_compare) != 0)
         return ERROR_EXIT;
     return SUCCESS_EXIT;
 }
