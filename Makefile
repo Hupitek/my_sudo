@@ -20,6 +20,7 @@ SRC 	=	src/my_sudo.c	\
 			src/free/free_my_sudo.c	\
 			src/action/compare_pwd.c	\
 			src/action/hash_pwd.c	\
+			src/action/exec_command.c	\
 
 OBJ_DIR	=	obj
 
