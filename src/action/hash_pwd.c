@@ -21,7 +21,7 @@ int hash_pwd(my_sudo_t *my_sudo)
     int len_salt = my_strlen(my_sudo->salt);
 
     setting = malloc(sizeof(char) * (len_hash_algo + len_salt + 1));
-    if (!setting)
+    if (setting == NULL)
         return ERROR_EXIT;
     my_strcpy(setting, my_sudo->hash_algo);
     my_strcat(setting, my_sudo->salt);
