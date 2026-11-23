@@ -43,6 +43,7 @@ debug: CFLAGS += -g
 debug: fclean $(OBJ)
 	make -C lib/my/
 	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS) $(LDLIBS) $(GFLAGS)
+	chmod +s $(NAME)
 
 .NOTPARALLEL: codingstyle
 codingstyle: CC = epiclang
