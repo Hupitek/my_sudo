@@ -5,9 +5,6 @@
 ** my_sudo
 */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
 #include "return_macro.h"
 #include "struct_my_sudo.h"
 #include "func_my_sudo.h"
