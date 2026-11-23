@@ -22,7 +22,7 @@ int get_user(char **env, my_sudo_t *my_sudo)
             break;
     }
     my_sudo->user = malloc(sizeof(char) * (my_strlen(env[line]) + 1));
-    if (!my_sudo->user)
+    if (my_sudo->user == NULL)
         return ERROR_EXIT;
     for (int i = 10; i < my_strlen(env[line]); i++) {
         my_sudo->user[indice] = env[line][i];

@@ -21,7 +21,7 @@ int get_pwd(char *line, my_sudo_t *my_sudo)
     int i = 0;
 
     my_sudo->pwd_user = malloc(sizeof(char) * (my_strcharlen(line, ':') + 1));
-    if (!my_sudo->pwd_user)
+    if (my_sudo->pwd_user == NULL)
         return ERROR_EXIT;
     for (; i < my_strcharlen(line, ':'); i++)
         my_sudo->pwd_user[i] = line[i];
@@ -35,7 +35,7 @@ int get_salt(char *line, my_sudo_t *my_sudo)
     int i = 0;
 
     my_sudo->salt = malloc(sizeof(char) * (my_strcharlen(line, '$') + 2));
-    if (!my_sudo->salt)
+    if (my_sudo->salt == NULL)
         return ERROR_EXIT;
     my_sudo->salt[0] = '$';
     for (; i < my_strcharlen(line, '$'); i++)
@@ -54,7 +54,7 @@ int get_hash_algo(char *line, my_sudo_t *my_sudo)
 
     line += 1;
     my_sudo->hash_algo = malloc(sizeof(char) * (my_strcharlen(line, '$') + 2));
-    if (!my_sudo->hash_algo)
+    if (my_sudo->hash_algo == NULL)
         return ERROR_EXIT;
     my_sudo->hash_algo[0] = '$';
     for (; i < my_strcharlen(line, '$'); i++)
@@ -104,7 +104,7 @@ int get_shadow_data(my_sudo_t *my_sudo)
     if (stat(ETC_SHADOW_PATH, &sarg) == -1)
         return ERROR_EXIT;
     buff = malloc(sizeof(char) * (sarg.st_size + 1));
-    if (!buff)
+    if (buff == NULL)
         return ERROR_EXIT;
     fill_buff(buff, &sarg);
     if (get_user_info(my_sudo, buff) == ERROR_EXIT) {
