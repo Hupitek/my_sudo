@@ -30,6 +30,7 @@ int main(int ac, char **av, char **env)
 {
     my_sudo_t my_sudo = {0};
 
+    init_my_sudo(&my_sudo);
     if (my_sudo_func(&my_sudo, ac, av, env) == ERROR_EXIT) {
         free_my_sudo(&my_sudo);
         return ERROR_EXIT;
