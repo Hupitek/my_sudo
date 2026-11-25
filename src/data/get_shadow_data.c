@@ -93,7 +93,6 @@ int fill_buff(char *buff, struct stat *sarg)
     read(fd, buff, sarg->st_size);
     buff[sarg->st_size] = '\0';
     close(fd);
-    printf("%p\n", buff);
     return SUCCESS_EXIT;
 }
 
@@ -107,9 +106,8 @@ int get_shadow_data(my_sudo_t *my_sudo)
     buff = malloc(sizeof(char) * (sarg.st_size + 1));
     if (buff == NULL)
         return ERROR_EXIT;
-    if (fill_buff(buff, &sarg) == ERROR_EXIT) {
+    if (fill_buff(buff, &sarg) == ERROR_EXIT)
         return ERROR_EXIT;
-    }
     if (get_user_info(my_sudo, buff) == ERROR_EXIT) {
         free(buff);
         return ERROR_EXIT;

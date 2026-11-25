@@ -29,15 +29,20 @@ int get_user(char **env, my_sudo_t *my_sudo)
 {
     int line = 0;
     int indice = 0;
+    int can_write = 0;
 
     if (get_user_line(&line, env) == ERROR_EXIT)
         return ERROR_EXIT;
     my_sudo->user = malloc(sizeof(char) * (my_strlen(env[line]) + 1));
     if (my_sudo->user == NULL)
         return ERROR_EXIT;
-    for (int i = 5; i < my_strlen(env[line]); i++) {
-        my_sudo->user[indice] = env[line][i];
-        indice++;
+    for (int i = 0; i < my_strlen(env[line]); i++) {
+        if (can_write == 1) {
+            my_sudo->user[indice] = env[line][i];
+            indice++;
+        }
+        if (env[line][i] == '=')
+            can_write++;
     }
     my_sudo->user[indice] = '\0';
     return SUCCESS_EXIT;
