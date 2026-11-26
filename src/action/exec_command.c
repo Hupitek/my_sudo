@@ -15,17 +15,18 @@
 int exec_command(int ac, char **av, my_sudo_t *my_sudo)
 {
     char **arg = NULL;
+    int indice = 0;
 
-    if (ac <= 2)
+    if (ac <= 1)
         return ERROR_EXIT;
-    arg = malloc(sizeof(char*) * (ac - 1));
+    arg = malloc(sizeof(char*) * (ac));
     if (arg == NULL)
         return ERROR_EXIT;
-    for (int i = 1; av[i] != NULL; i++)
-        arg[i - 1] = av[i];
-    arg[ac - 1] = NULL;
-    if (arg[0][0] != '-' && my_sudo->perm == true)
-        execvp(arg[0], arg);
-    free(arg);
+    for (int i = 1; av[i] != NULL; i++) {
+        arg[indice] = av[i];
+        indice++;
+    }
+    arg[indice] = NULL;
+    execvp(arg[0], arg);
     return SUCCESS_EXIT;
 }
