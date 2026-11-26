@@ -14,8 +14,6 @@
 
 int get_user_line(int *line, char **env)
 {
-    int a = 0;
-
     for (; env[*line] != NULL; *line += 1) {
         if (my_strstr(env[*line], "SUDO_USER=") != NULL)
             break;

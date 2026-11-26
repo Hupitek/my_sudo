@@ -12,7 +12,7 @@
 #include "../../lib/my/include/my.h"
 #include "struct_my_sudo.h"
 
-int exec_command(int ac, char **av, my_sudo_t *my_sudo)
+int exec_command(int ac, char **av)
 {
     char **arg = NULL;
     int indice = 0;
