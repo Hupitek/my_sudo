@@ -17,8 +17,6 @@ int exec_command(int ac, char **av)
     char **arg = NULL;
     int indice = 0;
 
-    if (ac <= 1)
-        return ERROR_EXIT;
     arg = malloc(sizeof(char*) * (ac));
     if (arg == NULL)
         return ERROR_EXIT;

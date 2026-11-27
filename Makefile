@@ -17,11 +17,15 @@ SRC 	=	src/my_sudo.c	\
 			src/data/get_shadow_data.c	\
 			src/data/get_user.c	\
 			src/data/get_input_pwd.c	\
+			src/data/get_sudoers_data.c	\
 			src/free/free_my_sudo.c	\
 			src/action/compare_pwd.c	\
 			src/action/hash_pwd.c	\
 			src/action/exec_command.c	\
 			src/init/init_my_sudo.c	\
+			src/flag/no_flag.c	\
+			src/flag/h_flag.c	\
+			src/parcing/parcing_arg.c	\
 
 OBJ_DIR	=	obj
 

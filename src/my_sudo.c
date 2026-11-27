@@ -9,20 +9,19 @@
 #include "return_macro.h"
 #include "struct_my_sudo.h"
 #include "func_my_sudo.h"
+#include "struct_flag.h"
+
+flag_t const tab[] = {
+    {&no_flag, NO_FLAG}
+};
 
 static
 int my_sudo_func(my_sudo_t *my_sudo, int ac, char **av, char **env)
 {
-    if (get_user(env, my_sudo) == ERROR_EXIT)
-        return ERROR_EXIT;
-    if (get_pwd_input(my_sudo))
-        return ERROR_EXIT;
-    if (get_shadow_data(my_sudo) == ERROR_EXIT)
-        return ERROR_EXIT;
-    hash_pwd(my_sudo);
-    if (compare_pwd(my_sudo->pwd_user, my_sudo->pwd_input_hash) == ERROR_EXIT)
-        return ERROR_EXIT;
-    if (exec_command(ac, av) == ERROR_EXIT)
+    parcing_arg(ac, av, my_sudo);
+    if (my_sudo->flag == H_FLAG)
+        return h_flag(ac, av);
+    if (tab[my_sudo->flag].func(ac, av, env, my_sudo) == ERROR_EXIT)
         return ERROR_EXIT;
     return SUCCESS_EXIT;
 }

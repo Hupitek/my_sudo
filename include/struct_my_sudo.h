@@ -17,6 +17,7 @@ typedef struct my_sudo_s {
     char *pwd_input;
     char *pwd_input_hash;
     bool perm;
+    int flag;
 } my_sudo_t;
 
 

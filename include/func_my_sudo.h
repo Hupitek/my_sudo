@@ -17,5 +17,9 @@ int compare_pwd(char *mdp, char *mdp_compare);
 int hash_pwd(my_sudo_t *my_sudo);
 int exec_command(int ac, char **av);
 void init_my_sudo(my_sudo_t *my_sudo);
+int get_sudoers_data(my_sudo_t *my_sudo);
+int no_flag(int ac, char **av, char **env, my_sudo_t *my_sudo);
+int parcing_arg(int ac, char **av, my_sudo_t *my_sudo);
+int h_flag(int ac, char **av);
 
 #endif /* !FUNC_MY_SUDO_H_ */
