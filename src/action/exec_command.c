@@ -9,8 +9,6 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "return_macro.h"
-#include "../../lib/my/include/my.h"
-#include "struct_my_sudo.h"
 
 int exec_command(int ac, char **av)
 {

@@ -9,7 +9,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-#include <stdio.h>
 #include "macro.h"
 #include "return_macro.h"
 #include "struct_my_sudo.h"

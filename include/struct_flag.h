@@ -17,7 +17,7 @@ typedef enum {
 } falg_t;
 
 typedef struct flag_s {
-    int(*func)(int ac, char **av, char **env, my_sudo_t *my_sudo);
+    int(*func)(int ac, char **av, my_sudo_t *my_sudo);
     falg_t flag;
 } flag_t;
 

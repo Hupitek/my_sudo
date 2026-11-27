@@ -12,7 +12,8 @@
 #include "struct_flag.h"
 
 flag_t const tab[] = {
-    {&no_flag, NO_FLAG}
+    {&no_flag, NO_FLAG},
+    {&u_flag, U_FLAG}
 };
 
 static
@@ -21,7 +22,11 @@ int my_sudo_func(my_sudo_t *my_sudo, int ac, char **av, char **env)
     parcing_arg(ac, av, my_sudo);
     if (my_sudo->flag == H_FLAG)
         return h_flag(ac, av);
-    if (tab[my_sudo->flag].func(ac, av, env, my_sudo) == ERROR_EXIT)
+    if (my_sudo->flag == NO_FLAG) {
+        if (get_user(env, my_sudo) == ERROR_EXIT)
+            return ERROR_EXIT;
+    }
+    if (tab[my_sudo->flag].func(ac, av, my_sudo) == ERROR_EXIT)
         return ERROR_EXIT;
     return SUCCESS_EXIT;
 }

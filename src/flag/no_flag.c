@@ -10,10 +10,8 @@
 #include "struct_my_sudo.h"
 #include "func_my_sudo.h"
 
-int no_flag(int ac, char **av, char **env, my_sudo_t *my_sudo)
+int no_flag(int ac, char **av, my_sudo_t *my_sudo)
 {
-    if (get_user(env, my_sudo) == ERROR_EXIT)
-        return ERROR_EXIT;
     if (get_pwd_input(my_sudo))
         return ERROR_EXIT;
     get_sudoers_data(my_sudo);
@@ -22,8 +20,10 @@ int no_flag(int ac, char **av, char **env, my_sudo_t *my_sudo)
     if (get_shadow_data(my_sudo) == ERROR_EXIT)
         return ERROR_EXIT;
     hash_pwd(my_sudo);
-    if (compare_pwd(my_sudo->pwd_user, my_sudo->pwd_input_hash) == ERROR_EXIT)
-        return ERROR_EXIT;
+    if (compare_pwd(my_sudo->pwd_user, my_sudo->pwd_input_hash) == ERROR_EXIT) {
+        if (incorrect_pwd(my_sudo) == ERROR_EXIT)
+            return ERROR_EXIT;
+    }
     if (exec_command(ac, av) == ERROR_EXIT)
         return ERROR_EXIT;
     return SUCCESS_EXIT;

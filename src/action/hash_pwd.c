@@ -11,7 +11,6 @@
 #include <crypt.h>
 #include "return_macro.h"
 #include "struct_my_sudo.h"
-#include "macro.h"
 #include "../../lib/my/include/my.h"
 
 int hash_pwd(my_sudo_t *my_sudo)

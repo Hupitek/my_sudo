@@ -6,7 +6,6 @@
 */
 
 #include "return_macro.h"
-#include "struct_my_sudo.h"
 #include "../../lib/my/include/my.h"
 
 int compare_pwd(char *mdp, char *mdp_compare)
